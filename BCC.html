@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biconnected Components Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Biconnected Components Visualizer</h1>
+        <p class="subtitle">DFS Tree • Articulation Points • Bridges • Back Edges</p>
+        
+        <div class="grid">
+            <div>
+                <div class="canvas-container">
+                    <canvas id="canvas" width="700" height="500"></canvas>
+                    
+                    <div class="controls">
+                        <button class="btn-primary" id="runBtn">Run DFS</button>
+                        <button class="btn-success" id="playBtn" style="display: none;">
+                            <span id="playIcon">&#9654;</span> <span id="playText">Play</span>
+                        </button>
+                        <button class="btn-secondary" id="resetBtn" style="display: none;">&#8634; Reset</button>
+                        <button class="btn-light" id="addNodeBtn">+ Add Node</button>
+                        <button class="btn-light" id="addEdgeBtn">Add Edge</button>
+                        <button class="btn-danger" id="clearBtn">&#128465; Clear All</button>
+                    </div>
+
+                    <div class="slider-container" id="sliderContainer" style="display: none;">
+                        <input type="range" id="stepSlider" min="0" max="0" value="0">
+                        <div class="step-info" id="stepInfo"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="card">
+                    <h2>Notations</h2>
+                    <div class="legend-item">
+                        <div class="legend-box" style="background: #16a34a;"></div>
+                        <span>Tree Edge</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box" style="background: #2563eb;"></div>
+                        <span>Back Edge</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box" style="background: #dc2626;"></div>
+                        <span>Bridge</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-circle" style="background: #ef4444;"></div>
+                        <span>Articulation Point</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-circle" style="background: #f97316;"></div>
+                        <span>Currently Visiting</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-circle" style="background: #9333ea;"></div>
+                        <span>Backtracking</span>
+                    </div>
+                </div>
+
+                <div class="card" id="stateCard" style="display: none;">
+                    <h2>Current State</h2>
+                    <div class="state-info" id="stateInfo"></div>
+                </div>
+
+                <div class="card dark-card">
+                    <h2>About</h2>
+                    <div style="font-size: 14px;">
+                        <p style="margin-bottom: 0.5rem;"><strong>disc[u]:</strong> Discovery time</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>low[u]:</strong> Lowest discovery time reachable</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Articulation Point:</strong> Removal disconnects graph</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Bridge:</strong> Edge whose removal disconnects graph</p>
+                        <p><strong>Biconnected Component:</strong> Maximal subgraph with no articulation points</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="algo.js"></script>
+</body>
+</html>
